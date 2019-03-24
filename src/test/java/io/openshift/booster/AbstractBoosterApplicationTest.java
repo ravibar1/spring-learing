@@ -27,17 +27,18 @@ public abstract class AbstractBoosterApplicationTest {
 
     @Test
     public void testGreetingEndpoint() {
-        given()
+        given().log().all()
            .baseUri(baseURI())
            .get(GREETING_PATH)
            .then()
            .statusCode(200)
-           .body("content", is(String.format(Greeting.FORMAT, "World")));
+           .body("content", is(String.format(Greeting.FORMAT, "World")))
+            ;
     }
 
     @Test
     public void testGreetingEndpointWithNameParameter() {
-        given()
+        given().log().all()
            .baseUri(baseURI())
            .param("name", "John")
            .when()
